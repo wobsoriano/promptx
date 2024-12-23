@@ -10,7 +10,7 @@ if (arch === 'x64') {
   filename = `../release/promptx-${platform}-${arch}.${suffix}`
 }
 
-const location = new URL(filename, import.meta.url).pathname
+const location = Bun.fileURLToPath(new URL(filename, import.meta.url))
 export const { symbols } = dlopen(location, {
   CreateSelection: {
     args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.int],
